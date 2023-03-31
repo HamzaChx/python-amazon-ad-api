@@ -254,7 +254,7 @@ curl \
 
 * Ad Groups
 * Bid Recommendations
-* [Campaigns](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaigns.html)
+* Campaigns
 * Keywords
 * Negative Keywords
 * Product Ads
@@ -275,7 +275,7 @@ curl \
 * Budget Recommendations
 * Budget Rules Recommendations
 * Product Recommendations
-* [Campaigns V3](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaignsv3.html)
+* Campaigns V3
 
 
 ### Modules Available Sponsored Brands
