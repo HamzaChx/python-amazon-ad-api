@@ -27,6 +27,13 @@ class NegativeKeywordsV3(Client):
         Creating negative product keywords.
 
         Request Body (required)
+            | **nativeLanguageKeyword** : (*string*), The unlocalized keyword text in the preferred locale of the advertiser
+            | **nativeLanguageLocale** : (*string*), The locale preference of the advertiser.
+            | **campaignId**: *string*, The identifer of the campaign to which the keyword is associated.
+            | **adGroupId**: *string*, The identifier of the ad group to which this keyword is associated
+            | **state**: *string*, The current resource state.' , 'Enum': '[ enabled ]
+            | **keywordText**: *string*, The text of the expression to match against a search query.
+            | **matchType**: *string*, 'The type of match.' , 'Enum': '[ NEGATIVE_EXACT, NEGATIVE_PHRASE, NEGATIVE_BROAD ]
 
         Returns
             ApiResponse
@@ -45,7 +52,10 @@ class NegativeKeywordsV3(Client):
         r"""
         Updating negative product keywords.
 
-        Request Body (required)
+        Request Body (required) :
+            | '**keywordId**':  *string*, (required) {'description': 'The identifer of the campaign to which the keyword is associated.'}
+            | '**state**': *string*, {'description': 'The current resource state.' , 'Enum': '[ enabled, paused, archived ]'}
+
 
         Returns
             ApiResponse
@@ -65,6 +75,8 @@ class NegativeKeywordsV3(Client):
         Deleting negative product keywords.
 
         Request Body (required)
+            | **keywordIdFilter** {} : Filter negative keywords by the list of objectIds
+                include [string] : list of negativeKeywordsIds as String to be used as filter. MinItems : 0, MaxItems :1000
 
         Returns
             ApiResponse

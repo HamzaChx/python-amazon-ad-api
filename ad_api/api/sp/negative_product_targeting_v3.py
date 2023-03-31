@@ -27,6 +27,12 @@ class NegativeTargetsV3(Client):
         Creating negative product targets.
 
         Request Body (required)
+            | '**campaignId**': *number*, {'description': 'The identifier of the campaign to which this negative target is associated.'}
+            | '**adGroupId**': *number*, {'description': 'The identifier of the ad group to which this negative target is associated.'}
+            | '**state**': *number*, {'description': 'The current resource state. [ enabled, paused, archived ]'}
+            | '**expression**'
+                |  '**value**': *string*, {'description': 'The expression value. '}
+                |  '**type**': *string*, {'description': The type of negative targeting expression. You can only specify values for the following predicates: 'Enum : [ ASIN_BRAND_SAME_AS, ASIN_SAME_AS ]'}
 
         Returns
             ApiResponse
@@ -46,6 +52,11 @@ class NegativeTargetsV3(Client):
         Updating negative product targets.
 
         Request Body (required)
+            | **targetId** : *string*, The target identifier
+            | '**state**': *string*, The current resource state. [ enabled, paused, archived ]
+            | '**expression**'
+            |       '**value**': *string*, The expression value.
+            |       '**type**': *string*, The type of nagative targeting expression. You can only specify values for the following predicates: Enum : [ASIN_BRAND_SAME_AS, ASIN_SAME_AS]
 
         Returns
             ApiResponse
@@ -65,6 +76,9 @@ class NegativeTargetsV3(Client):
         Deleting negative product targets.
 
         Request Body (required)
+            | **keywordIdFilter** {} : Filter negative targets by the list of objectIds
+                include [string] : list of negativeTargetIds as String to be used as filter. MinItems : 0, MaxItems :1000
+
 
         Returns
             ApiResponse

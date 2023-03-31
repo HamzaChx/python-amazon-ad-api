@@ -27,6 +27,15 @@ class TargetsV3(Client):
         Creating product targets.
 
         Request Body (required)
+            | '**campaignId**': *string*, {'description': 'The number or recommendations returned in a single page.'}
+            | '**adGroupId**': *string*, {'description': 'The page number in the result set to return.'}
+            | '**expression**'
+                | '**value**': *string*, {'description': 'The expression value.'}
+                |  '**type**': *string*, {'description': '[ queryBroadMatches, queryPhraseMatches, queryExactMatches, asinCategorySameAs, asinBrandSameAs, asinPriceLessThan, asinPriceBetween, asinPriceGreaterThan, asinReviewRatingLessThan, asinReviewRatingBetween, asinReviewRatingGreaterThan, asinSameAs, queryBroadRelMatches, queryHighRelMatches, asinSubstituteRelated, asinAccessoryRelated, asinAgeRangeSameAs, asinGenreSameAs, asinIsPrimeShippingEligible ]'}
+            | '**state**': *string*, {'description': 'The current resource state.' , 'Enum': '[ enabled, paused, archived ]'}
+            | '**expressionType**': *string*, {'description': '[ auto, manual ]'}
+            | '**bid**': *float*, {'description': 'The bid for ads sourced using the target. Min / Max 0.02 / 1000'}
+
 
         Returns
             ApiResponse
@@ -46,6 +55,13 @@ class TargetsV3(Client):
         Updating product targets.
 
         Request Body (required)
+            | '**targetId**':  *string*, (required) {'description': 'The identifer of the campaign to which the keyword is associated.'}
+            | '**state**': *string*, {'description': 'The current resource state.' , 'Enum': '[ enabled, paused, archived ]'}
+            | '**bid**': *float* {'description': 'Bid associated with this keyword. Applicable to biddable match types only.'}
+            | '**expression**'
+            |       '**value**': *string*, The expression value.
+            |       '**type**': *string*, The type of nagative targeting expression. You can only specify values for the following predicates: Enum : [ASIN_BRAND_SAME_AS, ASIN_SAME_AS]
+            | '**expressionType**' Enum : [AUTO, MANUAL]
 
         Returns
             ApiResponse
@@ -65,6 +81,9 @@ class TargetsV3(Client):
         Deleting product targets
 
         Request Body (required)
+            | **targetIdFilter** {} : Filter product targets by the list of objectIds
+                include [string] : list of productTargetIds as String to be used as filter. MinItems : 0, MaxItems :1000
+
 
         Returns
             ApiResponse

@@ -28,6 +28,13 @@ class KeywordsV3(Client):
         Creating product keywords.
 
         Request Body (required)
+            | **nativeLanguageKeyword** : (*string*), The unlocalized keyword text in the preferred locale of the advertiser
+            | **nativeLanguageLocale** : (*string*), The locale preference of the advertiser.
+            | **campaignId**: *string*, The identifer of the campaign to which the keyword is associated.
+            | **adGroupId**: *string*, The identifier of the ad group to which this keyword is associated
+            | **state**: *string*, The current resource state.' , 'Enum': '[ enabled ]
+            | **keywordText**: *string*, The text of the expression to match against a search query.
+            | **matchType**: *string*, 'The type of match.' , 'Enum': '[EXACT, PHRASE, BROAD]
 
         Returns
             ApiResponse
@@ -48,6 +55,9 @@ class KeywordsV3(Client):
         Updating product keywords.
 
         Request Body (required)
+            | '**keywordId**':  *string*, (required) {'description': 'The identifer of the campaign to which the keyword is associated.'}
+            | '**state**': *string*, {'description': 'The current resource state.' , 'Enum': '[ enabled, paused, archived ]'}
+            | '**bid**': *float* {'description': 'Bid associated with this keyword. Applicable to biddable match types only.'}
 
         Returns
             ApiResponse
@@ -68,6 +78,8 @@ class KeywordsV3(Client):
         Deleting product keywords.
 
         Request Body (required)
+            | **keywordIdFilter** {} : Filter keywords by the list of objectIds
+                include [string] : list of keywordsIds as String to be used as filter. MinItems : 0, MaxItems :1000
 
         Returns
             ApiResponse
