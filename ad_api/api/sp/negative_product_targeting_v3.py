@@ -19,7 +19,8 @@ class NegativeTargetsV3(Client):
             "Content-Type": json_version
         }
 
-        return self._request(kwargs.pop('path'), params=kwargs, headers=headers)
+        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
+                             headers=headers)
 
     @sp_endpoint('/sp/negativeTargets', method='POST')
     def create_negative_product_targets(self, version: int = 3, **kwargs) -> ApiResponse:

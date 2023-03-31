@@ -107,4 +107,6 @@ class AdGroupsV3(Client):
             "Content-Type": json_version
         }
 
-        return self._request(kwargs.pop('path'), params=kwargs, headers=headers)
+        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
+                             headers=headers)
+

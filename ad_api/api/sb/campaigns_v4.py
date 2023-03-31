@@ -12,7 +12,6 @@ class CampaignsV4(Client):
         Creates Sponsored Brands campaigns.
 
         Request body (Required)
-            Request body
             | **name** (string): [optional] The name of the campaign. This name must be unique to the Amazon Advertising account to which the campaign is associated. Maximum length of the string is 128 characters.
             | **state** (State > string): [optional] Enum: [ enabled, paused, archived ]
             | **portfolio_id** (int) [optional] The identifier of the portfolio to which the campaign is associated.
@@ -104,4 +103,4 @@ class CampaignsV4(Client):
         json_version = 'application/vnd.sbcampaignresource.v' + str(version) + "+json"
         headers = {"Accept": json_version}
 
-        return self._request(kwargs.pop('path'), params=kwargs, headers=headers)
+        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs, headers=headers)
