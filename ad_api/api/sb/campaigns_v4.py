@@ -104,4 +104,5 @@ class CampaignsV4(Client):
         json_version = 'application/vnd.sbcampaignresource.v' + str(version) + "+json"
         headers = {"Accept": json_version}
 
-        return self._request(kwargs.pop('path'), params=kwargs, headers=headers)
+        return self._request(kwargs.pop('path'), Utils.convert_body(kwargs.pop('body'), False),
+                             params=kwargs, headers=headers)
