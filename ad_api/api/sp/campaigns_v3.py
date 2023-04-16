@@ -1,16 +1,19 @@
-from ad_api.base import Client, sp_endpoint, ApiResponse, Utils
+from ad_api.base import Client, sp_endpoint, fill_query_params, ApiResponse, Utils
+import os
+import json
+from json.decoder import JSONDecodeError
+from io import TextIOWrapper
 
 
 class CampaignsV3(Client):
-    """
-    Version 3 of the Sponsored Products API introduces a simplified interface for creating and managing
-    Sponsored Products campaigns.
+    r"""
+    Amazon Ads API - Sponsored Products
     """
 
-    @sp_endpoint("/sp/campaigns", method="POST")
-    def create_campaigns(self, version: int = 3, **kwargs) -> ApiResponse:
-        """
-        Create Sponsored Product Campaigns.
+    @sp_endpoint('/sp/campaigns', method='POST')
+    def create_campaigns(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
+        r"""
+        create_campaigns(body: (dict, str, list)) -> ApiResponse
 
         Request Body [Required]
             | **name** (string): [required] The name of the campaign. This name must be unique to the Amazon Advertising account to which the campaign is associated. Maximum length of the string is 128 characters.
@@ -29,21 +32,22 @@ class CampaignsV3(Client):
 
         Returns
             ApiResponse
+
         """
 
-        json_version = 'application/vnd.spCampaign.v' + str(version) + "+json"
+        schema_version = 'application/vnd.spCampaign.v' + str(version) + '+json'
+        headers = {"Accept": schema_version, "Content-Type": schema_version}
+        prefer_value = 'return=representation'  #  return=minimal
+        if prefer:
+            headers.update({"Prefer": prefer_value})
+        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
+                             headers=headers)
 
-        headers = {
-            "Accept": json_version,
-            "Content-Type": json_version
-        }
+    @sp_endpoint('/sp/campaigns', method='PUT')
+    def edit_campaigns(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
+        r"""
+        edit_campaigns(body: (dict, str, list)) -> ApiResponse
 
-        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs
-                             , headers=headers)
-
-    @sp_endpoint("/sp/campaigns", method="PUT")
-    def edit_campaigns(self, version: int = 3, **kwargs) -> ApiResponse:
-        """
         Update existing Sponsored Product Campaigns.
 
         Request Body [Required]
@@ -65,42 +69,19 @@ class CampaignsV3(Client):
         Returns
             ApiResponse
         """
-        json_version = 'application/vnd.spCampaign.v' + str(version) + "+json"
 
-        headers = {
-            "Accept": json_version,
-            "Content-Type": json_version
-        }
-
-        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs
-                             , headers=headers)
-
-    @sp_endpoint("/sp/campaigns/delete", method="POST")
-    def delete_campaigns(self, version: int = 3, **kwargs) -> ApiResponse:
-        """
-        Deletes Sponsored Products campaigns.
-
-        Request body (required)
-            | **campaignIdFilter** (ObjectIdFilter): The identifier of an existing campaign. [required]
-                | **include** (list>str): Entity object identifier. [required] minItems: 0 maxItems: 1000
-
-        Returns
-            ApiResponse
-        """
-
-        json_version = 'application/vnd.spCampaign.v' + str(version) + "+json"
-        headers = {
-            "Accept": json_version,
-            "Content-Type": json_version
-        }
-
+        schema_version = 'application/vnd.spCampaign.v' + str(version) + '+json'
+        headers = {"Accept": schema_version, "Content-Type": schema_version}
+        prefer_value = 'return=representation'  #  return=minimal
+        if prefer:
+            headers.update({"Prefer": prefer_value})
         return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
                              headers=headers)
 
-    @sp_endpoint("/sp/campaigns/list", method="POST")
-    def list_campaigns(self, version : int = 3, **kwargs) -> ApiResponse:
-        """
-        Lists Sponsored Products campaigns.
+    @sp_endpoint('/sp/campaigns/list', method='POST')
+    def list_campaigns(self, version: int = 3, **kwargs) -> ApiResponse:
+        r"""
+        list_campaigns(body: (dict, str, list)) -> ApiResponse
 
         Request Body (optional) : Include the body for specific filtering, or leave empty to get all campaigns.
             | **state_filter** (State): The returned array is filtered to include only campaigns with state set to one of the values in the specified comma-delimited list. Defaults to `enabled` and `paused`.
@@ -118,12 +99,27 @@ class CampaignsV3(Client):
             ApiResponse
 
         """
+        schema_version = 'application/vnd.spCampaign.v' + str(version) + '+json'
+        headers = {"Accept": schema_version, "Content-Type": schema_version}
+        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
+                             headers=headers)
 
-        json_version = 'application/vnd.spCampaign.v' + str(version) + "+json"
+    @sp_endpoint('/sp/campaigns/delete', method='POST')
+    def delete_campaigns(self, version: int = 3, **kwargs) -> ApiResponse:
+        r"""
+        delete_campaigns(body: (dict, str, list)) -> ApiResponse
 
-        headers = {
-            "Accept": json_version,
-            "Content-Type": json_version
-        }
+        Deletes Sponsored Products campaigns.
 
-        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs, headers=headers)
+        Request body (required)
+            | **campaignIdFilter** (ObjectIdFilter): The identifier of an existing campaign. [required]
+                | **include** (list>str): Entity object identifier. [required] minItems: 0 maxItems: 1000
+
+        Returns
+            ApiResponse
+
+        """
+        schema_version = 'application/vnd.spCampaign.v' + str(version) + '+json'
+        headers = {"Accept": schema_version, "Content-Type": schema_version}
+        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
+                             headers=headers)

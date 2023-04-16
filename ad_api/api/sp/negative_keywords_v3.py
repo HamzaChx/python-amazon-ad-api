@@ -13,7 +13,7 @@ class NegativeKeywordsV3(Client):
         Returns
             ApiResponse
         """
-        json_version = 'application/vnd.spKeyword.v' + str(version) + "+json"
+        json_version = 'application/vnd.spNegativeKeyword.v' + str(version) + "+json"
         headers = {
             "Accept": json_version,
             "Content-Type": json_version
@@ -23,7 +23,7 @@ class NegativeKeywordsV3(Client):
                              headers=headers)
 
     @sp_endpoint('/sp/negativeKeywords/', method='POST')
-    def create_negative_keyword(self, version: int = 3, **kwargs) -> ApiResponse:
+    def create_negative_keyword(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
         r"""
         Creating negative product keywords.
 
@@ -39,17 +39,21 @@ class NegativeKeywordsV3(Client):
         Returns
             ApiResponse
         """
-        json_version = 'application/vnd.spKeyword.v' + str(version) + "+json"
+        json_version = 'application/vnd.spNegativeKeyword.v' + str(version) + "+json"
         headers = {
             "Accept": json_version,
             "Content-Type": json_version
         }
 
+        prefer_value = 'return=representation'
+        if prefer:
+            headers.update({"Prefer": prefer_value})
+
         return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
                              headers=headers)
 
     @sp_endpoint('/sp/negativeKeywords/', method='PUT')
-    def edit_negative_keyword(self, version: int = 3, **kwargs) -> ApiResponse:
+    def edit_negative_keyword(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
         r"""
         Updating negative product keywords.
 
@@ -61,11 +65,15 @@ class NegativeKeywordsV3(Client):
         Returns
             ApiResponse
         """
-        json_version = 'application/vnd.spKeyword.v' + str(version) + "+json"
+        json_version = 'application/vnd.spNegativeKeyword.v' + str(version) + "+json"
         headers = {
             "Accept": json_version,
             "Content-Type": json_version
         }
+
+        prefer_value = 'return=representation'
+        if prefer:
+            headers.update({"Prefer": prefer_value})
 
         return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
                              headers=headers)
@@ -83,7 +91,7 @@ class NegativeKeywordsV3(Client):
             ApiResponse
         """
 
-        json_version = 'application/vnd.spKeyword.v' + str(version) + "+json"
+        json_version = 'application/vnd.spNegativeKeyword.v' + str(version) + "+json"
         headers = {
             "Accept": json_version,
             "Content-Type": json_version

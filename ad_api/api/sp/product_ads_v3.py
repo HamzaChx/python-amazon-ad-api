@@ -36,8 +36,8 @@ class ProductAdsV3(Client):
                              headers=headers)
 
     @sp_endpoint('/sp/productAds', method='POST')
-    def create_product_ads(self, version: int = 3, **kwargs) -> ApiResponse:
-        """
+    def create_product_ads(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
+        r"""
         Create one or more SP Product Ads.
 
         Request body: (Required) A list of product ads for creation. Note that the SKU field is used by sellers and the ASIN field is used by vendors.
@@ -48,6 +48,9 @@ class ProductAdsV3(Client):
             | '**asin**': (*string*) The ASIN associated with the product. Defined for vendors only.
             | '**state**': (*string*) The current resource state. 'Enum':[ enabled, paused, archived ]
 
+        Prefer (header) : You can use the prefer header to specify whether you want the full object representation as
+        part of the response. If you don’t specify the prefer header, you will see just the ID of the created entity in the response.
+
         Returns:
             ApiResponse
         """
@@ -58,11 +61,15 @@ class ProductAdsV3(Client):
             "Content-Type": json_version
         }
 
+        prefer_value = 'return=representation'
+        if prefer:
+            headers.update({"Prefer": prefer_value})
+
         return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
                              headers=headers)
 
     @sp_endpoint('/sp/productAds', method='PUT')
-    def edit_product_ads(self, version: int = 3, **kwargs) -> ApiResponse:
+    def edit_product_ads(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
         r"""
         Updates one or more product ads specified by identifier.
 
@@ -70,6 +77,9 @@ class ProductAdsV3(Client):
             | **adId**: *string* The identifier of an existing product ad to update.
             | **state**: *string* The current resource state.', 'Enum': [ enabled, paused, archived ]
 
+        Prefer (header) : You can use the prefer header to specify whether you want the full object representation as
+        part of the response. If you don’t specify the prefer header, you will see just the ID of the created entity in the response.
+
         Returns:
             ApiResponse
 
@@ -81,12 +91,16 @@ class ProductAdsV3(Client):
             "Content-Type": json_version
         }
 
+        prefer_value = 'return=representation'
+        if prefer:
+            headers.update({"Prefer": prefer_value})
+
         return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
                              headers=headers)
 
     @sp_endpoint('/sp/productAds/delete', method='POST')
     def delete_product_ads(self, version: int = 3, **kwargs) -> ApiResponse:
-        """
+        r"""
         Delete one or multiple sponsored product ads.
 
         Request Body (required) : a dictionary to filter with ad ids that should be deleted. Sets the state of a

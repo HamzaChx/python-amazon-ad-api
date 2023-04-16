@@ -73,7 +73,7 @@ class AdGroupsV4(Client):
             'Accept': json_ressource
         }
 
-        return self._request(kwargs.pop('path'), Utils.convert_body(kwargs.pop('body'), False),
+        return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False),
                              params=kwargs, headers=headers)
 
     @sp_endpoint("/sb/v4/adGroups/delete", method="POST")

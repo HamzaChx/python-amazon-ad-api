@@ -14,7 +14,6 @@ class KeywordsV3(Client):
             ApiResponse
         """
         json_version = 'application/vnd.spKeyword.v3+json' + str(version) + "+json"
-
         headers = {
             "Accept": json_version,
             "Content-Type": json_version
@@ -24,7 +23,7 @@ class KeywordsV3(Client):
                              headers=headers)
 
     @sp_endpoint('/sp/keywords', method='POST')
-    def create_keyword(self, version: int = 3, **kwargs) -> ApiResponse:
+    def create_keyword(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
         r"""
         Creating product keywords.
 
@@ -47,11 +46,15 @@ class KeywordsV3(Client):
             "Content-Type": json_version
         }
 
+        prefer_value = 'return=representation'
+        if prefer:
+            headers.update({"Prefer": prefer_value})
+
         return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
                              headers=headers)
 
     @sp_endpoint('/sp/keywords', method='PUT')
-    def edit_keyword(self, version: int = 3, **kwargs) -> ApiResponse:
+    def edit_keyword(self, version: int = 3, prefer: bool = False, **kwargs) -> ApiResponse:
         r"""
         Updating product keywords.
 
@@ -69,6 +72,10 @@ class KeywordsV3(Client):
             "Accept": json_version,
             "Content-Type": json_version
         }
+
+        prefer_value = 'return=representation'
+        if prefer:
+            headers.update({"Prefer": prefer_value})
 
         return self._request(kwargs.pop('path'), data=Utils.convert_body(kwargs.pop('body'), False), params=kwargs,
                              headers=headers)

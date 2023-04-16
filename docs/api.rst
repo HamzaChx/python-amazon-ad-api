@@ -7,6 +7,7 @@ Common Resources
     api/profiles
     api/manager_accounts
     api/invoices
+    api/billing
     api/metadata
     api/eligibility
     api/history
@@ -17,3 +18,4 @@ Common Resources
     api/insights
     api/reports
     api/validation_configurations
+    api/recommendations

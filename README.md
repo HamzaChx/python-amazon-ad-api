@@ -4,7 +4,7 @@
 ![CodeQL](https://img.shields.io/badge/Docs-sphinx-green)
 ![CodeQL](https://img.shields.io/github/v/release/denisneuf/python-amazon-ad-api)
 [![Documentation Status](https://readthedocs.org/projects/python-amazon-ad-api/badge/?version=latest)](https://python-amazon-ad-api.readthedocs.io/en/latest/?badge=latest)
-[![Verified on Openbase](https://badges.openbase.com/python/verified/python-amazon-ad-api.svg?token=upNllBzLVJv/xZpn/LcPWzff0YEwlGXPszgv2vSJhgM=)](https://openbase.com/python/python-amazon-ad-api?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+
 
 ## Amazon's Advertising API
 
@@ -217,13 +217,13 @@ curl \
 
 ```
 
-### Modules Available Common Resources
+### [Modules Available Common Resources](https://python-amazon-ad-api.readthedocs.io/en/latest/api.html)
 
 * [Profiles](https://python-amazon-ad-api.readthedocs.io/en/latest/api/profiles.html)
 * [Manager Accounts](https://python-amazon-ad-api.readthedocs.io/en/latest/api/manager_accounts.html)
 * [Portfolios](https://python-amazon-ad-api.readthedocs.io/en/latest/api/portfolios.html)
 * [Invoices](https://python-amazon-ad-api.readthedocs.io/en/latest/api/invoices.html)
-* Billing
+* [Billing](https://python-amazon-ad-api.readthedocs.io/en/latest/api/billing.html)
 * [Audiences](https://python-amazon-ad-api.readthedocs.io/en/latest/api/audiences.html)
 * [Change History open Beta](https://python-amazon-ad-api.readthedocs.io/en/latest/api/history.html)
 * [Creative Assets open Beta](https://python-amazon-ad-api.readthedocs.io/en/latest/api//creative_assets.html)
@@ -231,8 +231,8 @@ curl \
 * [Insights](https://python-amazon-ad-api.readthedocs.io/en/latest/api/insights.html)
 * [Localization](https://python-amazon-ad-api.readthedocs.io/en/latest/api/localization.html)
 * [Product Selector](https://python-amazon-ad-api.readthedocs.io/en/latest/api/metadata.html)
-* [Reports](https://python-amazon-ad-api.readthedocs.io/en/latest/api/reports.html)
 * [Validation Configurations](https://python-amazon-ad-api.readthedocs.io/en/latest/api/validation_configurations.html)
+* [Tactical recommendations beta](https://python-amazon-ad-api.readthedocs.io/en/latest/api/recommendations.html)
 
 
 ### Amazon Attribution open beta
@@ -250,41 +250,41 @@ curl \
 * [Create test account](https://python-amazon-ad-api.readthedocs.io/en/latest/api/advertising_test_account.html#ad_api.api.AdvertisingTestAccount)
 * [Get test account information](https://python-amazon-ad-api.readthedocs.io/en/latest/api/advertising_test_account.html#ad_api.api.AdvertisingTestAccount.AdvertisingTestAccount.get_test_account)
 
-### Modules Available Sponsored Products 2.0
 
-* Ad Groups
-* Bid Recommendations
+### [Modules Available Sponsored Products 2.0](https://python-amazon-ad-api.readthedocs.io/en/latest/sp_v2.html)
+
+Warning: [PLANNED DEPRECATION 6/30/2023]
+There is a new version 3 of Sponsored Product API, please check the [migration guide](https://advertising.amazon.com/API/docs/en-us/sponsored-products/v3-migration-guide).
+
+
+### [Modules Available Sponsored Products 3.0](https://python-amazon-ad-api.readthedocs.io/en/latest/sp_v3.html)
+
+
+* [ThemeBased Bid Recommendation](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/bid_recommendations_v3.html)
+* [Keyword Recommendations](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/ranked_keywords_recommendations.html)
+* [Keywords](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/keywords_v3.html)
+* [Negative Keywords](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/negative_keywords_v3.html)
+* [Product Targeting](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/product_targeting.html)
+* [Campaign Optimization](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaign_optimization_rules.html)
+* [Budget Rules](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/budget_rules.html)
+* [Product Ads](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/product_ads_v3.html)
+* [Negative Targeting Clauses](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/negative_product_targeting_v3.html)
+* [Campaign Negative Targeting Clauses](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaign_negative_targets.html)
+* [Budget recommendations and missed opportunities](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/product_recommendations.html)
+* [Budget Rules Recommendation](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/budget_rules_recommendations.html)
+* [Campaigns](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaignsv3.html)
+* [Ad Groups](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/ad_groups_v3.html)
+* [Consolidated Recommendations](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaigns_consolidated_recommendations.html)
+* [Campaign Negative Keywords](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaign_negative_keywords_v3.html)
+* [Product Recommendations](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/budget_recommendations.html)
+* [Budget Usage](https://python-amazon-ad-api.readthedocs.io/en/latest/sp/campaign_budget_usage.html)
+* [Reports](https://python-amazon-ad-api.readthedocs.io/en/latest/api/reports.html)
+
+
+### Modules Available Sponsored Brands 3.0
+
 * Campaigns
-* Keywords
-* Negative Keywords
-* Product Ads
-* Suggested Keywords
-* Product Targeting
-* Negative Product Targeting
-* Campaign Negative Keywords
-* Reports
-* Snapshots
-
-### Modules Available Sponsored Products 3.0
-
-
-* Budget Rules
-* Campaign Optimization Rules
-* Ranked Keywords Recommendations
-* Product Targeting
-* Budget Recommendations
-* Budget Rules Recommendations
-* Product Recommendations
-* Campaigns V3
-
-
-### Modules Available Sponsored Brands
-
-* Campaigns
-* Campaigns V4
 * Ad Groups
-* Ad Groups V4
-* Ads Groups V4
 * Keywords
 * Negative Keywords
 * Product Targeting
@@ -298,6 +298,12 @@ curl \
 * Moderation
 * Reports
 * Snapshots
+
+### Modules Available Sponsored Brands 4.0
+
+* [Campaigns](https://python-amazon-ad-api.readthedocs.io/en/latest/sb/campaigns_v4.html)
+* [Ad Groups](https://python-amazon-ad-api.readthedocs.io/en/latest/sb/ad_groups_v4.html)
+* [Ads Groups](https://python-amazon-ad-api.readthedocs.io/en/latest/sb/ads_v4.html)
 
 ### Modules Available Sponsored Display
 
@@ -361,7 +367,7 @@ This API is based on the [API Client](https://github.com/saleweaver/rapid_rest_c
 
 ### DISCLAIMER
 
-We are not affiliated with Amazon
+We are not affiliated with Amazon but they used our api :)
 
 ### LICENSE
 

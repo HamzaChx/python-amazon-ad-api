@@ -1,5 +1,11 @@
-Sponsored Products 2.0
-======================
+2.0
+===
+
+.. deprecated:: 4.0.2
+
+.. warning::
+
+    There is a new version 3 of Sponsored Product API, please check the `migration guide`_.
 
 Amazon Advertising API - Sponsored Products
 
@@ -24,3 +30,11 @@ This specification is available for download from the `Advertising API developer
     sp/negative_product_targeting
     sp/reports
     sp/snapshots
+
+**********
+References
+**********
+
+.. target-notes::
+
+.. _`migration guide`: https://advertising.amazon.com/API/docs/en-us/sponsored-products/v3-migration-guide
